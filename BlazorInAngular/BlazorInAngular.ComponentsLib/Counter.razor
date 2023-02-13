@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<h3>Counter</h3>
+<h5>@Caption</h5>
+
+<p>Value is <strong>@counterValue</strong></p>
+
+<button @onclick=Increment>Increment in Blazor</button>
+
+@code {
+    private int counterValue = 0;
+
+    [Parameter]
+    public string Caption { get; set; } = "without caption";
+
+    [Parameter]
+    public Person[] Persons { get; set; } = new Person[0];
+
+    [Parameter]
+    public EventCallback<string> OnIncrementClicked { get; set; }
+
+    public async Task Increment(){
+        counterValue++;
+
+        await OnIncrementClicked.InvokeAsync(Caption);
+    }
+    
+}
