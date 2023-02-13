@@ -3,9 +3,16 @@
 <h3>Counter</h3>
 <h5>@Caption</h5>
 
+<ul>
+    @foreach (var person in Persons)
+    {
+        <li>@person.Name</li>
+    }
+</ul>
+
 <p>Value is <strong>@counterValue</strong></p>
 
-<button @onclick=Increment>Increment in Blazor</button>
+<button @onclick="Increment">Increment in Blazor</button>
 
 @code {
     private int counterValue = 0;
