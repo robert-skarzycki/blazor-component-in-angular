@@ -7,12 +7,25 @@ const PROXY_CONFIG = [
   {
     context: [
       "/weatherforecast",
+      "/_content",
+      "/_framework",
+      "/_blazor"
    ],
-    target: target,
+   proxyTimeout: 3000, 
+   target: target,
     secure: false,
     headers: {
       Connection: 'Keep-Alive'
     }
+  },
+  {
+    context: [
+      "/_blazor"
+    ],
+    target: target,
+    secure: false,
+    ws: true,
+    logLevel: "debug"
   }
 ]
 
